@@ -29,19 +29,19 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(params[:order])
     @order.add_line_items_from_cart(current_cart)
-
     respond_to do |format|
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+        #Notifier.order_received(@order).deliver
         format.html { redirect_to(store_url, :notice =>
-            'Thank you for your order.') }
-        format.xml  { render :xml => @order, :status => :created,
-                             :location => @order }
+            I18n.t('.thanks')) }
+        format.xml { render :xml => @order, :status => :created,
+                            :location => @order }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @order.errors,
-                             :status => :unprocessable_entity }
+        format.xml { render :xml => @order.errors,
+                            :status => :unprocessable_entity }
       end
     end
   end
