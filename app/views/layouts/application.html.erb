@@ -12,10 +12,11 @@
 <body id="store">
 <div id="banner">
   <%= form_tag store_path, :class => 'locale' do %>
-
+      <!-- START_SELECTION MENU LANGUAGES -->
       <%= select_tag 'set_locale',
                      options_for_select(LANGUAGES, I18n.locale.to_s),
                      :onchange => 'this.form.submit()' %>
+      <!-- END_SELECTION MENU LANGUAGES -->
       <%= submit_tag 'submit' %>
       <%= javascript_tag "$$('.locale input').each(Element.hide)" %>
   <% end %>
@@ -37,15 +38,9 @@
 
     <ul>
       <!-- START_HIGHLIGHT -->
-      <li><a href="http://www...."><%= t('.home') %></a></li>
-      <!-- END_HIGHLIGHT -->
-      <!-- START_HIGHLIGHT -->
+      <li><a href="/"><%= t('.home') %></a></li>
       <li><a href="http://www..../faq"><%= t('.questions') %></a></li>
-      <!-- END_HIGHLIGHT -->
-      <!-- START_HIGHLIGHT -->
       <li><a href="http://www..../news"><%= t('.news') %></a></li>
-      <!-- END_HIGHLIGHT -->
-      <!-- START_HIGHLIGHT -->
       <li><a href="http://www..../contact"><%= t('.contact') %></a></li>
       <!-- END_HIGHLIGHT -->
     </ul>

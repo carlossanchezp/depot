@@ -12,7 +12,6 @@ Depot::Application.routes.draw do
   #get "sessions/destroy"
 
   resources :users
-
   resources :orders
   resources :line_items
   resources :carts
